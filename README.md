@@ -1,6 +1,6 @@
-# Java8TreeExample 
+# Java 8 Patterns
 
-Example for processing tree structure using Java 8 streams and lambdas.
+Shows the implementation of some design patterns in Java 8.
 
-See TreeTest.java and its embedded comments.
+
  
