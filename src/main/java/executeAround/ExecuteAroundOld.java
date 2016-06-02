@@ -22,15 +22,13 @@ public class ExecuteAroundOld {
         // 2) read the first 50 lines and uppercase them
         // 3) find out which line is the longest
         // 4) find the first 1000 lines that start with A
+        // 5) think of something yourself ;-)
         
-        // We want to be able to read any number of lines.
-        // We also want to filter and uppercase lines.
-        // And we want to be able to count all lines,...
-
         // Hint: Define a functional interface named BufferedReaderProcessor, which has one method:
         // String process(BufferedReader br) throws IOException;
-        // This will enable you to refactor the method in such a way that you can pass in the reading behaviour.
+        // This will enable you to refactor the method in such a way that you can pass in the reading behavior.
         // For reading and filtering all lines you can make use of the new stream method lines() in BufferedReader.
+
     }
 
     public static String processFile() throws IOException {

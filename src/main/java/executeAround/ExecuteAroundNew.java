@@ -1,5 +1,8 @@
 package executeAround;
 
+import static common.Utils.header;
+import static common.Utils.printHeader;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -15,32 +18,36 @@ public class ExecuteAroundNew {
 
     public static void main(String... args) throws IOException {
 
-        // reading one line
-        System.out.println("--------------------\n" + processFile(br -> br.readLine()));
+        printHeader("read one line");
+        System.out.println(processFile(br -> br.readLine()));
 
-        // reading two lines
-        System.out.println("--------------------\n" + processFile(br -> br.readLine() + "\n" + br.readLine()));
+        printHeader("read two lines");
+        System.out.println(processFile(br -> br.readLine() + "\n" + br.readLine()));
 
-        // read first 50 lines
-        System.out.println("--------------------\n"
-                + processFile(br -> br.lines().parallel().limit(50).collect(Collectors.joining("\n"))));
+        printHeader("read first 50 lines (parallel)");
+        System.out.println(processFile(br -> br.lines().parallel().limit(50).collect(Collectors.joining("\n"))));
 
-        // read first 50 lines
-        System.out.println("--------------------\n" + processFile(
+        printHeader("read first 50 lines (parallel)");
+        System.out.println(processFile(
                 br -> br.lines().parallel().limit(50).map(l -> l.toUpperCase()).collect(Collectors.joining("\n"))));
 
-        System.out.println("--------------------\n"
-                + processFile(br -> br.lines().parallel().map(l -> l.length()).reduce(Integer::max).toString()));
+        printHeader("find length of longest line (parallel) - version 1");
+        System.out
+                .println(processFile(br -> br.lines().parallel().map(l -> l.length()).reduce(Integer::max).toString()));
 
+        printHeader("find longest line (parallel) - version 1");
         System.out.println(
-                "--------------------\n" + processFile(br -> br.lines().parallel().filter(l -> l.startsWith("A"))
-                        .limit(1000).collect(Collectors.joining("\n"))));
+                processFile(br -> br.lines().parallel().max(Comparator.comparingInt(String::length)).toString()));
 
-    }
+        printHeader("find longest line (parallel) - version 2");
+        System.out.println(processFile(br -> br.lines().parallel().reduce((x, y) -> {
+            return x.length() > y.length() ? x : y;
+        }).toString()));
 
-    public class StringWithCounter {
-        int count;
-        String s;
+        printHeader("find first 1000 lines starting with A (parallel)");
+        System.out.println(processFile(br -> br.lines().parallel().filter(l -> l.startsWith("A")).limit(1000)
+                .collect(Collectors.joining("\n"))));
+
     }
 
     public static String processFile(BufferedReaderProcessor processor) throws IOException {
