@@ -13,6 +13,9 @@ public class StrategyLambda {
         
         Validator v4 = new Validator((String s) -> s.matches("[a-z]+"));
         System.out.println(v4.validate("bbbb"));
+        
+        // Hint: You can even get rid of the Validator interface by replacing it in the Validator class using Function<String, Boolean> instead 
+        
     }
 
 }
