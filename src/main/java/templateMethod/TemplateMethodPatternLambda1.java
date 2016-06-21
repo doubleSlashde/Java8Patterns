@@ -29,7 +29,7 @@ public class TemplateMethodPatternLambda1 {
     }
 
     // workflow is not meant to be subclassed -> final
-    static final class Workflow {
+    private static final class Workflow {
 
         private final Runnable task2;
         private final Runnable task3;

@@ -4,8 +4,8 @@ public class TemplateMethodPatternOld {
 
     public static void main(String[] args) {
         
-        initiateWorkFlow(new WorkflowManager2Impl1());
-        initiateWorkFlow(new WorkflowManager2Impl2());
+        initiateWorkFlow(new WorkflowImpl1());
+        initiateWorkFlow(new WorkflowImpl2());
         
         // Task: Refactor this by using Lambdas. 
         
@@ -15,7 +15,7 @@ public class TemplateMethodPatternOld {
         
     }
 
-    static void initiateWorkFlow(WorkflowManager2 workflowMgr) {
+    static void initiateWorkFlow(Workflow workflowMgr) {
         System.out.println("Starting the workflow ... the old way");
         workflowMgr.doTask1();
         workflowMgr.doTask2();
@@ -26,7 +26,7 @@ public class TemplateMethodPatternOld {
     /**
      * Abstract Workflow system
      */
-    static abstract class WorkflowManager2 {
+    private static abstract class Workflow {
 
         public void doTask1() {
             System.out.println("Doing Task1...");
@@ -45,7 +45,7 @@ public class TemplateMethodPatternOld {
     /**
      * One of the extensions of the abstract workflow system
      */
-    static class WorkflowManager2Impl1 extends WorkflowManager2 {
+    private static class WorkflowImpl1 extends Workflow {
         @Override
         public void doTask2() {
             System.out.println("Doing Task2.1...");
@@ -60,7 +60,7 @@ public class TemplateMethodPatternOld {
     /**
      * Other extension of the abstract workflow system
      */
-    static class WorkflowManager2Impl2 extends WorkflowManager2 {
+    private static class WorkflowImpl2 extends Workflow {
         @Override
         public void doTask2() {
             System.out.println("Doing Task2.2...");

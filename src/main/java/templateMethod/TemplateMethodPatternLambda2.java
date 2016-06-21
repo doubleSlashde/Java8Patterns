@@ -5,8 +5,6 @@ import static common.Utils.printHeader;
 import java.util.HashMap;
 import java.util.Map;
 
-import templateMethod.TemplateMethodPatternOld.WorkflowManager2;
-
 public class TemplateMethodPatternLambda2 {
     public static void main(String[] args) {
 
@@ -38,7 +36,7 @@ public class TemplateMethodPatternLambda2 {
     
 
     // workflow is not meant to be subclassed -> final
-    static final class Workflow {
+    private static final class Workflow {
 
         private Map<String, Runnable> tasks = new HashMap<>();
 

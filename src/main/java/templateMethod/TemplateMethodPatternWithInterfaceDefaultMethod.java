@@ -17,27 +17,27 @@ public class TemplateMethodPatternWithInterfaceDefaultMethod {
         
     }
 
-    static void initiateWorkFlow(WorkflowManager workflowMgr) {
+    private static void initiateWorkFlow(Workflow workflow) {
         System.out.println("Starting the workflow ...");
-        workflowMgr.doTask1();
-        workflowMgr.doTask2();
-        workflowMgr.doTask3();
-        workflowMgr.doTask4();
+        workflow.doTask1();
+        workflow.doTask2();
+        workflow.doTask3();
+        workflow.doTask4();
     }
-}
-
-interface WorkflowManager {
-    public default void doTask1() {
-        System.out.println("Doing Task1...");
-    }
-
-    public void doTask2();
     
-    public default void doTask3() {
-        System.out.println("Doing Task3...");
-    }
-
-    public default void doTask4() {
-        System.out.println("Doing Task4...");
+    private interface Workflow {
+        public default void doTask1() {
+            System.out.println("Doing Task1...");
+        }
+        
+        public void doTask2();
+        
+        public default void doTask3() {
+            System.out.println("Doing Task3...");
+        }
+        
+        public default void doTask4() {
+            System.out.println("Doing Task4...");
+        }
     }
 }
